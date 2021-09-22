@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hexa.c                                             :+:      :+:    :+:   */
+/*   uint_to_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 05:07:10 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/19 03:51:11 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/09/21 14:52:39 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/21 14:54:48 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "../ft_printf.h"
 
 char		*to_hex(unsigned int nbr);
 static char	*converter(unsigned int nbr, char *buffer);
@@ -26,8 +24,8 @@ static char	*str_rev(char *str)
 	char	*reversed;
 
 	idx = 0;
-	orig_len = strlen(str);
-	reversed = calloc(orig_len + 1, sizeof(char));
+	orig_len = ft_strlen(str);
+	reversed = ft_calloc(orig_len + 1, sizeof(char));
 	if(!reversed)
 		return (NULL);
 	while (idx < orig_len)
@@ -81,7 +79,8 @@ static char	*converter(unsigned int nbr, char *buffer)
 // How Hexadecimal works
 // https://simple.wikipedia.org/wiki/Hexadecimal
 // Does not work with negative numbers.
-// nbr needs to be converted to positive before calling.
+// nbr needs to be converted to positive and write
+// negative sign before calling.
 char	*to_hex(unsigned int nbr)
 {
 	char			*result;
@@ -96,13 +95,4 @@ char	*to_hex(unsigned int nbr)
 		return (NULL);
 	result = converter(nbr, result);
 	return (result);
-}
-
-int main(void)
-{
-	unsigned int nbr = 124626;
-	char *conv = to_hex(nbr);
-	printf("Result: %s\n", conv);
-	free(conv);
-	return (0);
 }
