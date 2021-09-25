@@ -96,3 +96,12 @@ char	*to_hex(unsigned int nbr)
 	result = converter(nbr, result);
 	return (result);
 }
+
+// gcc -Werror -Wextra -Wall ./jam/uint_to_hex.c libft/libft.a && ./a.out
+#include <stdio.h>
+#
+int main(void)
+{
+	unsigned int nbr = 954;
+	printf("Result: %s", to_hex(nbr));
+}
