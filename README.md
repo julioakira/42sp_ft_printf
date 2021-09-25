@@ -9,8 +9,8 @@ ft_printf written with ❤ for 42sp.
 ---
 ### Defining a variadic function
 ```c
-int	sum(int num_args, ...);
-long func(char a, double b, int c, ...);
+int		sum(int num_args, ...);
+long	func(char a, double b, int c, ...);
 ```
 - By C standards a variadic function should take at least ***ONE*** named argument.
 ---
