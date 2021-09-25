@@ -30,7 +30,7 @@ typedef struct {
 
 2) **fp_offset** - Holds the offset in bytes from the `reg_save_area` to the place where the next floating point argument is saved.
 
-3) **overflow_arg_area** - Used to fetch arguments passed on the stack. It is initializes with the address of the first argument passed on the stack, if there is one, and is updated to point to the start of the next argument.
+3) **overflow_arg_area** - Used to fetch arguments passed on the stack. It is initialized with the address of the first argument passed on the stack, if there is one, and is updated to point to the start of the next argument.
 
 4) **reg_save_area** - Is a pointer to the start of the register save area. The technical definition of what is the `register save area` is not utterly important, but you should know that it relates to assembler-level stack saves, allocation and offsets for variables.
 ---
