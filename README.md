@@ -1,9 +1,7 @@
 # 42sp_ft_printf
 ft_printf written with ❤ for 42sp.
 
-## Key Concepts
-
-### **Variadic arguments**
+## **Variadic arguments**
 
 - Allows a function to take a indefinite number of arguments.
 - Provided by the `<stdarg.h>` header.
@@ -30,7 +28,7 @@ typedef struct {
 
 1) **gp_offset** - Holds the offset in bytes from the `reg_save_area` to the place where the next "non-floating-point" argument register is saved.
 
-2) **fp_offset** - Holds the offset in butes from the `reg_save_area` to the place where the next floating point argument is saved.
+2) **fp_offset** - Holds the offset in bytes from the `reg_save_area` to the place where the next floating point argument is saved.
 
 3) **overflow_arg_area** - Used to fetch arguments passed on the stack. It is initializes with the address of the first argument passed on the stack, if there is one, and updated to point to the start of the next argument.
 
