@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   va_test.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 02:51:42 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/21 15:01:35 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/09/27 04:05:08 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/27 04:35:10 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
-int	sum(int, ...);
-
-int	sum(int num_args, ...)
+void	free_and_nullify(void *ptr)
 {
-	int		result;
-	va_list	arg_list;
-	int		idx;
-
-	result = 0;
-	idx = 0;
-	va_start(arg_list, num_args);
-	while (idx < num_args)
-	{
-		result += va_arg(arg_list, int);
-		idx++;
-	}
-	va_end(arg_list);
-	return (result);
+	free(ptr);
+	ptr = NULL;
 }
 
-int main(void)
+char	*ft_str_tolower(char *str)
 {
-	printf("The sum of the provided numbers is: %d\n", sum(4, 2, 3, 4, 5));
-	return (0);
+	char	*lower;
+	int		i;
+	int		size;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	size = ft_strlen(str) + 1;
+	lower = ft_calloc(sizeof(char), size);
+	if (!lower)
+		return (NULL);
+	while (str[i] && i < size)
+	{
+		lower[i] = ft_tolower(str[i]);
+		i++;
+	}
+	return (lower);
 }

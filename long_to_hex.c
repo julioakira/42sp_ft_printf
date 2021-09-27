@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uint_to_hex.c                                      :+:      :+:    :+:   */
+/*   long_to_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:52:39 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/21 14:54:48 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/27 05:30:09 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-char		*to_hex(unsigned int nbr);
-static char	*converter(unsigned int nbr, char *buffer);
-static int	digit_counter(unsigned int nbr);
+static char	*converter(unsigned long nbr, char *buffer);
+static int	digit_counter(unsigned long nbr);
 static char	*str_rev(char *str);
 
 static char	*str_rev(char *str)
@@ -26,7 +25,7 @@ static char	*str_rev(char *str)
 	idx = 0;
 	orig_len = ft_strlen(str);
 	reversed = ft_calloc(orig_len + 1, sizeof(char));
-	if(!reversed)
+	if (!reversed)
 		return (NULL);
 	while (idx < orig_len)
 	{
@@ -40,9 +39,9 @@ static char	*str_rev(char *str)
 
 // Works with negative numbers, but the minus
 // sign is ignored.
-static int	digit_counter(unsigned int nbr)
+static int	digit_counter(unsigned long nbr)
 {
-	int digits;
+	int	digits;
 
 	digits = !nbr;
 	while (nbr)
@@ -53,12 +52,12 @@ static int	digit_counter(unsigned int nbr)
 	return (digits);
 }
 
-static char	*converter(unsigned int nbr, char *buffer)
+static char	*converter(unsigned long nbr, char *buffer)
 {
-	unsigned int	n;
-	unsigned int	tmp;
+	unsigned long	n;
+	unsigned long	tmp;
 	unsigned int	idx;
-	char 			*converted;
+	char			*converted;
 
 	n = nbr;
 	idx = 0;
@@ -81,10 +80,10 @@ static char	*converter(unsigned int nbr, char *buffer)
 // Does not work with negative numbers.
 // nbr needs to be converted to positive and write
 // negative sign before calling.
-char	*to_hex(unsigned int nbr)
+char	*to_hex(unsigned long nbr, int is_upper)
 {
-	char			*result;
-	int				digit_count;
+	char	*result;
+	int		digit_count;
 
 	digit_count = digit_counter(nbr);
 	if (digit_count <= 2)
@@ -93,6 +92,9 @@ char	*to_hex(unsigned int nbr)
 		result = ft_calloc(digit_count, sizeof(char));
 	if (!result)
 		return (NULL);
-	result = converter(nbr, result);
+	if (is_upper)
+		result = converter(nbr, result);
+	else
+		result = ft_str_tolower(converter(nbr, result));
 	return (result);
 }
