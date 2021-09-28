@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:21:24 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:36:46 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 01:57:22 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ t_metadata	*new_metadata(char *content);
 void		free_struct(t_metadata **metadata_ptr);
 
 // Handlers
-void	print_handler(t_metadata *data, va_list args);
+void	handle_print(t_metadata *data, va_list args);
 int		eval_conversions(t_metadata *data);
 void	handle_result(t_metadata *data, va_list args);
+void	handle_char(va_list args);
 void	handle_string(va_list args);
 void	handle_hex(va_list args, int is_upper);
 void	handle_pointer(va_list args);
+void	handle_uint(va_list args);
+void	handle_decimal(va_list args);
 // Secondary Aux functions
 char	*to_hex(unsigned long nbr, int is_upper);
 void	free_and_nullify(void *ptr);

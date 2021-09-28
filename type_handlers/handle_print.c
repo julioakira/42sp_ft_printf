@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_handler.c                                    :+:      :+:    :+:   */
+/*   handle_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 00:21:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:36:33 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 01:45:52 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	print_handler(t_metadata *data, va_list args)
+void	handle_print(t_metadata *data, va_list args)
 {
 	while (data->content[data->curr_idx])
 	{
