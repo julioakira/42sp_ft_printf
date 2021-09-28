@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_uint.c                                      :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 01:24:30 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 03:10:06 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/07/21 20:51:39 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/13 02:19:26 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-// Needs corrections on uint overflow
-void	handle_uint(va_list args)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned int	uint;
-	char			*uint_result;
+	size_t	idx;
+	char	*ptr;
 
-	uint = va_arg(args, unsigned int);
-	uint_result = ft_litoa(uint);
-	ft_putstr_fd(uint_result, 1);
-	free_and_nullify(uint_result);
+	ptr = (char *)s;
+	idx = 0;
+	while (idx < n)
+	{
+		if ((unsigned char) ptr[idx] == (unsigned char) c)
+			return (ptr + idx);
+		idx++;
+	}
+	return (NULL);
 }

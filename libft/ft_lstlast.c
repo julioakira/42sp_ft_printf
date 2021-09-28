@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_string.c                                    :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 00:53:26 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:53:36 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/16 03:45:45 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/18 01:16:02 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	handle_string(va_list args)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	*str_result;
-
-	str_result = va_arg(args, char *);
-	ft_putstr_fd(str_result, 1);
-	str_result = NULL;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }

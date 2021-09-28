@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 10:05:58 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 02:31:17 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:10:04 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	handle_result(t_metadata *data, va_list args)
 {
 	if (data->conversion == 'c')
-		handle_char(args);
+		handle_char(args, data);
 	if (data->conversion == 'd'
 		|| data->conversion == 'i')
-		handle_decimal(args);
+		handle_decimal(args, data);
 	if (data->conversion == 'u')
-		handle_uint(args);
+		handle_uint(args, data);
 	if (data->conversion == 's')
-		handle_string(args);
+		handle_string(args, data);
 	if (data->conversion == 'x')
-		handle_hex(args, 0);
+		handle_hex(args, data, 0);
 	if (data->conversion == 'X')
-		handle_hex(args, 1);
+		handle_hex(args, data, 1);
 	if (data->conversion == 'p')
-		handle_pointer(args);
+		handle_pointer(args, data);
 }

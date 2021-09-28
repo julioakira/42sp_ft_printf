@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_char.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jakira-p <jakira-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 00:54:43 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:55:56 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/07/21 02:22:17 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/07/26 20:47:51 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	handle_char(va_list args)
+void	ft_bzero(void *s, size_t n)
 {
-	int	signed_int;
-
-	signed_int = va_arg(args, unsigned int);
-	ft_putchar_fd(signed_int, 1);
+	ft_memset(s, 0, n);
 }

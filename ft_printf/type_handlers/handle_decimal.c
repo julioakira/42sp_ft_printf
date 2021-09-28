@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_print.c                                     :+:      :+:    :+:   */
+/*   handle_decimal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 00:21:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 01:45:52 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/09/28 01:36:09 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/28 19:05:09 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	handle_print(t_metadata *data, va_list args)
+void	handle_decimal(va_list args, t_metadata *data)
 {
-	while (data->content[data->curr_idx])
-	{
-		if (data->content[data->curr_idx] == '%')
-		{
-			data->curr_idx++;
-			data->conversion = eval_conversions(data);
-			if (data->conversion)
-			{
-				data->curr_idx--;
-				handle_result(data, args);
-				data->curr_idx++;
-			}
-		}
-		else
-			ft_putchar_fd(data->content[data->curr_idx], 1);
-		data->curr_idx++;
-	}
+	int		signed_int;
+	char	*int_result;
+
+	signed_int = va_arg(args, int);
+	int_result = ft_itoa(signed_int);
+	data->char_counter += ft_strlen(int_result);
+	ft_putstr_fd(int_result, 1);
+	free_and_nullify(int_result);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_hex.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 00:52:27 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:54:10 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/08/18 01:14:31 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/08/18 21:06:21 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	handle_hex(va_list args, int is_upper)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	unsigned long	nbr;
-	char			*result;
+	t_list	*tmp;
 
-	nbr = va_arg(args, unsigned long);
-	if (is_upper)
-		result = to_hex(nbr, 1);
-	else
-		result = to_hex(nbr, 0);
-	ft_putstr_fd(result, 1);
-	free_and_nullify(result);
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = tmp;
+	}
 }
