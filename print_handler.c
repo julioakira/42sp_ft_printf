@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 00:21:17 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 00:24:46 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 00:36:33 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_handler(t_metadata *data, va_list args)
 		if (data->content[data->curr_idx] == '%')
 		{
 			data->curr_idx++;
-			data->conversion = eval_conversions(data, data->curr_idx);
+			data->conversion = eval_conversions(data);
 			if (data->conversion)
 			{
 				data->curr_idx--;
