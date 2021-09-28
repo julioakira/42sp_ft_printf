@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:19:52 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 02:31:54 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 03:02:32 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	ft_printf(const char *str, ...)
 int main(void)
 {
 	char *ptr_test = "Hello, world!";
-	ft_printf("Hello %c %d %i %u %s %x %X %p", 'a', 100, 999, -250, "i am a string!", 86447, 86447, &ptr_test);
+	ft_printf("Hello %c %d %i %u %s %x %X %p", 'a', 100, 999, -10, "i am a string!", 86447, 86447, &ptr_test);
 }
