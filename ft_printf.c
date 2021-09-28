@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:19:52 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 01:48:24 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 02:31:54 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_printf(const char *str, ...)
 	return (0);
 }
 
-// gcc -Werror -Wextra -Wall ft_printf.c handle_result.c eval_conversions.c utils.c long_to_hex.c struct_utils.c type_handlers/handle_print.c type_handlers/handle_char.c type_handlers/handle_decimal.c type_handlers/handle_hex.c type_handlers/handle_pointer.c type_handlers/handle_string.c type_handlers/handle_uint.c libft/libft.a && ./a.out
+// gcc -Werror -Wextra -Wall ft_printf.c type_handlers/handle_result.c eval_conversions.c utils.c long_to_hex.c struct_utils.c type_handlers/handle_print.c type_handlers/handle_char.c type_handlers/handle_decimal.c type_handlers/handle_hex.c type_handlers/handle_pointer.c type_handlers/handle_string.c type_handlers/handle_uint.c libft/libft.a && ./a.out
 int main(void)
 {
 	char *ptr_test = "Hello, world!";
