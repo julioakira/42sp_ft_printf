@@ -6,36 +6,36 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 10:05:58 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/27 05:11:24 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/27 23:42:43 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handle_result(char spec, va_list args)
+void	handle_result(t_metadata *data, va_list args)
 {
 	int		signed_int;
 	char	*int_result;
 
-	if (spec == 'c')
+	if (data->conversion == 'c')
 	{
 		signed_int = va_arg(args, int);
 		ft_putchar_fd(signed_int, 1);
 	}
-	if (spec == 'd' || spec == 'i' || spec == 'u')
+	if (data->conversion == 'd' || data->conversion == 'i' || data->conversion == 'u')
 	{
 		signed_int = va_arg(args, int);
 		int_result = ft_itoa(signed_int);
 		ft_putstr_fd(int_result, 1);
 		free_and_nullify(int_result);
 	}
-	if (spec == 's')
+	if (data->conversion == 's')
 		handle_string(args);
-	if (spec == 'x')
+	if (data->conversion == 'x')
 		handle_hex(args, 0);
-	if (spec == 'X')
+	if (data->conversion == 'X')
 		handle_hex(args, 1);
-	if (spec == 'p')
+	if (data->conversion == 'p')
 		handle_pointer(args);
 }
 

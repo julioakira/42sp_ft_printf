@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   print_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/27 04:05:08 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/27 22:02:21 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/09/28 00:21:17 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/28 00:24:46 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	free_and_nullify(void *ptr)
+void	print_handler(t_metadata *data, va_list args)
 {
-	free(ptr);
-	ptr = NULL;
-}
-
-char	*ft_str_tolower(char *str)
-{
-	char	*lower;
-	int		i;
-	int		size;
-
-	if (!str)
-		return (NULL);
-	i = 0;
-	size = ft_strlen(str) + 1;
-	lower = ft_calloc(sizeof(char), size);
-	if (!lower)
-		return (NULL);
-	while (str[i] && i < size)
+	while (data->content[data->curr_idx])
 	{
-		lower[i] = ft_tolower(str[i]);
-		i++;
+		if (data->content[data->curr_idx] == '%')
+		{
+			data->curr_idx++;
+			data->conversion = eval_conversions(data, data->curr_idx);
+			if (data->conversion)
+			{
+				data->curr_idx--;
+				handle_result(data, args);
+				data->curr_idx++;
+			}
+		}
+		else
+			ft_putchar_fd(data->content[data->curr_idx], 1);
+		data->curr_idx++;
 	}
-	return (lower);
 }

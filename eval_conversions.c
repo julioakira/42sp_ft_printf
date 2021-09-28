@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 05:10:48 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/27 06:19:21 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/28 00:26:03 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ X = hexadecimal upercase
 % = %
 */
 
-int	eval_conversions(const char spec)
+int	eval_conversions(t_metadata *data, int curr_idx)
 {
-	char	*allowed;
 	size_t	idx;
-
-	allowed = ft_strdup("cspdiuxX%");
+	data->flags = ft_strdup("cspdiuxX%");
 	idx = 0;
-	while (allowed[idx])
+	while (data->flags[idx])
 	{
-		if (spec == allowed[idx])
+		if ((data->content[curr_idx]) == data->flags[idx])
 		{
-			free(allowed);
-			allowed = NULL;
-			return (spec);
+			free(data->flags);
+			data->flags = NULL;
+			data->conversion = data->content[curr_idx];
+			return (data->conversion);
 		}
 		idx++;
 	}
-	free_and_nullify(allowed);
+	free(data->flags);
+	data->flags = NULL;
 	return (0);
 }
