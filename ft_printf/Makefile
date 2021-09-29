@@ -6,7 +6,7 @@
 #    By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 14:21:05 by jakira-p          #+#    #+#              #
-#    Updated: 2021/09/29 10:33:33 by jakira-p         ###   ########.fr        #
+#    Updated: 2021/09/29 14:26:54 by jakira-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,37 +24,49 @@ NAME	= ft_printf.a
 
 BUILD_DIR	= build/
 
-SRC	=	ft_printf.c \
-		utils/eval_conversions.c \
-		utils/long_to_hex.c \
-		utils/struct_utils.c \
-		utils/utils.c \
-		type_handlers/handle_char.c \
-		type_handlers/handle_decimal.c \
-		type_handlers/handle_hex.c \
-		type_handlers/handle_pointer.c \
-		type_handlers/handle_print.c \
-		type_handlers/handle_result.c \
-		type_handlers/handle_string.c \
-		type_handlers/handle_uint.c
+TYPE_HANDLERS_DIR = type_handlers/
 
-OBJS	=	$(addprefix $(BUILD_DIR),${SRC:.c=.o})
+UTILS_DIR = utils/
+
+SRC	=	ft_printf.c \
+		$(UTILS_DIR)eval_conversions.c \
+		$(UTILS_DIR)long_to_hex.c \
+		$(UTILS_DIR)struct_utils.c \
+		$(UTILS_DIR)utils.c \
+		$(TYPE_HANDLERS_DIR)handle_char.c \
+		$(TYPE_HANDLERS_DIR)handle_decimal.c \
+		$(TYPE_HANDLERS_DIR)handle_hex.c \
+		$(TYPE_HANDLERS_DIR)handle_pointer.c \
+		$(TYPE_HANDLERS_DIR)handle_print.c \
+		$(TYPE_HANDLERS_DIR)handle_result.c \
+		$(TYPE_HANDLERS_DIR)handle_string.c \
+		$(TYPE_HANDLERS_DIR)handle_uint.c
+
+OBJS	=	$(addprefix $(BUILD_DIR),$(notdir $(SRC:.c=.o)))
 
 .PHONY : clean fclean re
 
-${NAME}: ${OBJS}
-		${AR} ${NAME} ${$(notdir ${OBJS})}
+all : $(NAME)
 
-${OBJS}: ${SRC}
-		@mkdir -p ${BUILD_DIR}
-		${CC} ${CFLAGS} -c $< -o ${BUILD_DIR}$(notdir $@) ${INCLUDES}
+$(BUILD_DIR)ft_printf.o: ft_printf.c
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$(notdir $@) $(INCLUDES)
 
-all : ${NAME}
+$(NAME): $(OBJS)
+		$(AR) $(NAME) $(OBJS)
+
+$(BUILD_DIR)%.o: $(UTILS_DIR)%.c
+		@mkdir -p $(BUILD_DIR)
+		$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$(notdir $@) $(INCLUDES)
+
+$(BUILD_DIR)%.o: $(TYPE_HANDLERS_DIR)%.c
+		@mkdir -p $(BUILD_DIR)
+		$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$(notdir $@) $(INCLUDES)
 
 clean:
-		${RM} ${OBJS} ${BUILD_DIR}
+		$(RM) $(OBJS) $(BUILD_DIR)
 
 fclean: clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 
 re: fclean all
