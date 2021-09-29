@@ -6,7 +6,7 @@
 #    By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 14:21:05 by jakira-p          #+#    #+#              #
-#    Updated: 2021/09/29 04:58:07 by jakira-p         ###   ########.fr        #
+#    Updated: 2021/09/29 10:33:33 by jakira-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ RM	= rm -rf
 AR	= ar -rcs
 
 CFLAGS	= -Wall -Werror -Wextra
-
-DIR		= type_handlers/
 
 INCLUDES	= -I../libft
 
