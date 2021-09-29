@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 10:05:58 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/29 04:28:08 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:59:45 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	handle_result(t_metadata *data, va_list args)
 		handle_hex(args, data, 1);
 	if (data->conversion == 'p')
 		handle_pointer(args, data);
+	if (data->conversion == '%')
+		handle_percentage(data);
 }

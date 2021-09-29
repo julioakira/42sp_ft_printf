@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   handle_percentage.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 14:19:52 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/29 15:55:52 by jakira-p         ###   ########.fr       */
+/*   Created: 2021/09/29 18:50:52 by jakira-p          #+#    #+#             */
+/*   Updated: 2021/09/29 18:59:04 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+void	handle_percentage(t_metadata *data)
 {
-	va_list		args;
-	t_metadata	*data;
-	int			char_counter;
-	char		*str_cpy;
+	unsigned int	uint;
 
-	str_cpy = ft_strdup(str);
-	data = new_metadata(str_cpy);
-	va_start(args, str);
-	handle_print(data, args);
-	va_end(args);
-	char_counter = data->char_counter;
-	free_struct(&data);
-	return (char_counter);
+	uint = 37;
+	ft_putchar_fd(uint, 1);
+	data->char_counter++;
 }

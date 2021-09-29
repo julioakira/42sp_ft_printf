@@ -6,95 +6,41 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:52:39 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/29 04:30:44 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:40:14 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char	*converter(unsigned long nbr, char *buffer);
-static int	digit_counter(unsigned long nbr);
-static char	*str_rev(char *str);
+static int len(unsigned long n, int base);
 
-static char	*str_rev(char *str)
+char *to_hex(unsigned long n, int is_upper)
 {
-	size_t	orig_len;
-	size_t	idx;
-	char	*reversed;
+	int l;
+	char *hex;
+	char *map[2];
 
-	idx = 0;
-	orig_len = ft_strlen(str);
-	reversed = ft_calloc(orig_len + 1, sizeof(char));
-	if (!reversed)
-		return (NULL);
-	while (idx < orig_len)
+	l = len(n, 16);
+	map[0] = "0123456789abcdef";
+	map[1] = "0123456789ABCDEF";
+	hex = ft_calloc(l + 1, 1);
+	while (l-- > 0)
 	{
-		reversed[idx] = str[orig_len - idx - 1];
-		idx++;
+		hex[l] = (unsigned char)map[is_upper][(n % 16)];
+		n = n / 16;
 	}
-	free(str);
-	str = NULL;
-	return (reversed);
+	return (hex);
 }
 
-// Works with negative numbers, but the minus
-// sign is ignored.
-static int	digit_counter(unsigned long nbr)
+int len(unsigned long n, int base)
 {
-	int	digits;
+	int l;
 
-	digits = !nbr;
-	while (nbr)
+	l = 1;
+	while (n / base != 0)
 	{
-		digits++;
-		nbr /= 10;
+		l++;
+		n = n / base;
 	}
-	return (digits);
-}
-
-static char	*converter(unsigned long nbr, char *buffer)
-{
-	unsigned long	n;
-	unsigned long	tmp;
-	unsigned int	idx;
-	char			*converted;
-
-	n = nbr;
-	idx = 0;
-	while (n)
-	{
-		tmp = n % 16;
-		if (tmp < 10)
-			tmp = tmp + 48;
-		else
-			tmp = tmp + 55;
-		buffer[idx++] = tmp;
-		n /= 16;
-	}
-	converted = str_rev(buffer);
-	return (converted);
-}
-
-// How Hexadecimal works
-// https://simple.wikipedia.org/wiki/Hexadecimal
-// Does not work with negative numbers.
-// nbr needs to be converted to positive and write
-// negative sign before calling.
-char	*to_hex(unsigned long nbr, int is_upper)
-{
-	char	*result;
-	int		digit_count;
-
-	digit_count = digit_counter(nbr);
-	if (digit_count <= 2)
-		result = ft_calloc(digit_count + 1, sizeof(char));
-	else
-		result = ft_calloc(digit_count, sizeof(char));
-	if (!result)
-		return (NULL);
-	if (is_upper)
-		result = converter(nbr, result);
-	else
-		result = ft_str_tolower(converter(nbr, result));
-	return (result);
+	return (l);
 }

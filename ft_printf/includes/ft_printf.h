@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:21:24 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/29 11:20:35 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:59:16 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		handle_hex(va_list args, t_metadata *data, int is_upper);
 void		handle_pointer(va_list args, t_metadata *data);
 void		handle_uint(va_list args, t_metadata *data);
 void		handle_decimal(va_list args, t_metadata *data);
+void		handle_percentage(t_metadata *data);
 // Secondary Aux functions
 char		*to_hex(unsigned long nbr, int is_upper);
 void		free_and_nullify(void *ptr);

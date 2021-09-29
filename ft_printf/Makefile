@@ -6,7 +6,7 @@
 #    By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 14:21:05 by jakira-p          #+#    #+#              #
-#    Updated: 2021/09/29 14:26:54 by jakira-p         ###   ########.fr        #
+#    Updated: 2021/09/29 18:53:48 by jakira-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM	= rm -rf
 
 AR	= ar -rcs
 
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g
 
 INCLUDES	= -I../libft
 
@@ -40,7 +40,8 @@ SRC	=	ft_printf.c \
 		$(TYPE_HANDLERS_DIR)handle_print.c \
 		$(TYPE_HANDLERS_DIR)handle_result.c \
 		$(TYPE_HANDLERS_DIR)handle_string.c \
-		$(TYPE_HANDLERS_DIR)handle_uint.c
+		$(TYPE_HANDLERS_DIR)handle_uint.c \
+		$(TYPE_HANDLERS_DIR)handle_percentage.c
 
 OBJS	=	$(addprefix $(BUILD_DIR),$(notdir $(SRC:.c=.o)))
 
