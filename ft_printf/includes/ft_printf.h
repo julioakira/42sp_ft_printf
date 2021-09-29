@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:21:24 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/28 20:05:47 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/09/29 04:27:23 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 
 // Main struct
 
