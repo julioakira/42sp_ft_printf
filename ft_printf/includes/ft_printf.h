@@ -6,7 +6,7 @@
 /*   By: jakira-p <jakira-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:21:24 by jakira-p          #+#    #+#             */
-/*   Updated: 2021/09/29 18:59:16 by jakira-p         ###   ########.fr       */
+/*   Updated: 2021/10/14 20:49:06 by jakira-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "../../libft/libft.h"
+
+# if __APPLE__
+#  define IS_MACOS 1
+# else
+#  define IS_MACOS 0
+# endif
 
 // Main struct
 
